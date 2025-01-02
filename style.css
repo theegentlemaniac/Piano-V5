@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 10px;
+    background: linear-gradient(120deg, black, purple, blue);
+    background-size: 300% 300%;
+    animation: gradientBackground 10s ease infinite;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.wrapper {
+    width: 1200px;
+    border-radius: 20px;
+    padding: 50px 55px;
+    background: #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.name {
+    text-align: center;
+    color: darkslategrey;
+    position: relative;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+
+
+
+.name:hover{
+    color: #0073e6;
+}
+
+
+.name::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #0073e6;
+    transition: width 0.3s ease, left 0.3s ease;
+
+}
+
+.name:hover::after{
+    width: 100%;
+    left: 0;
+}
+
+
+.wrapper header {
+    color: #b2b2b2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h2 {
+    font-size: 1.6rem;
+    font-style: italic;
+}
+
+header h2:hover {
+    font-style: italic;
+}
+
+header .column {
+    display: flex;
+    align-items: center;
+}
+
+header .column span {
+    font-weight: 500;
+    margin-right: 15px;
+    font-size: 1.19rem;
+}
+
+#sustain-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #b2b2b2;
+    background-color: transparent;
+    color: #b2b2b2;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#toggle-theme {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #b2b2b2;
+    background-color: transparent;
+    color: #b2b2b2;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#toggle-theme:hover
+{
+    background-color: #b2b2b2;
+    color: #141414;
+}
+
+
+
+#sustain-btn:hover {
+    background-color: #b2b2b2;
+    color: #141414;
+}
+
+#sustain-btn.active {
+    background-color: #00cc66;
+    color: white;
+    border-color: #00cc66;
+}
+
+.volume-slider input {
+    outline: none;
+    accent-color: #fff;
+}
+
+.keys-checkbox input {
+    outline: none;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+    appearance: none;
+    border-radius: 30px;
+    position: relative;
+    background: #4b4b4b;
+}
+
+.keys-checkbox input::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    top: 50%;
+    left: 5px;
+    position: absolute;
+    border-radius: inherit;
+    background: #8c8c8c;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.keys-checkbox input:checked::before {
+    left: 35px;
+    background: #fff;
+}
+
+.piano-keys {
+    display: flex;
+    list-style: none;
+    margin-top: 40px;
+    margin-left: 55px;
+}
+
+.piano-keys .key {
+    list-style: none;
+    color: #a2a2a2;
+    text-transform: uppercase;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+}
+
+.piano-keys .black {
+    width: 44px;
+    height: 140px;
+    margin: 0 -22px 0 -22px;
+    z-index: 2;
+    background: linear-gradient(#333, #000);
+    border-radius: 0 0 5px 5px;
+}
+
+.piano-keys .white {
+    width: 70px;
+    height: 230px;
+    background: linear-gradient(#fff 96%, #eee 4%);
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+
+.piano-keys .white.active {
+    box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+}
+
+.piano-keys .black:active {
+    box-shadow: inset -5px 5px 20px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to bottom, #000, #434343 100%);
+}
+
+.piano-keys span {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    font-size: 1.13rem;
+    text-align: center;
+}
+
+.piano-keys .key.hide span {
+    display: none;
+}
+
+@media screen and (max-width: 615px) {
+    .piano-keys .key:nth-child(13),
+    .piano-keys .key:nth-child(14),
+    .piano-keys .key:nth-child(15),
+    .piano-keys .key:nth-child(16),
+    .piano-keys .key:nth-child(17) {
+        display: none;
+    }
+    .piano-keys .white {
+        width: 50px;
+    }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: #333;
+    color: #fff;
+}
+
+.wrapper.dark-mode {
+    background: #222;
+}
+
+/* Keep white keys white in dark mode */
+.piano-keys.dark-mode .key.white {
+    background: linear-gradient(#fff, #eee);
+    border: 1px solid #444;
+}
+
+.piano-keys.dark-mode .key.black {
+    background: linear-gradient(#222, #000);
+}
+
+/* Active Key Styling */
+.piano-keys .key.active {
+    box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+}
+
+.piano-keys .key.black:active {
+    box-shadow: inset -5px 5px 20px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to bottom, #000 , #434343 100%);
+}
+
+body, .wrapper {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.piano-keys .key {
+    transition: background 0.3s, box-shadow 0.3s;
+}
